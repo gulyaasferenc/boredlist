@@ -20,9 +20,8 @@ html {
   width: 80vw;
   height: 80vh;
   /* border: 1px solid black; */
-  margin: auto;
+  margin: 10vh auto 10vh auto;
   border-radius: 10px;
-  margin-top: 10vh;
   align-self: center;
   box-shadow: 0px 59px 83px -40px rgba(0, 0, 0, 0.75);
 }
