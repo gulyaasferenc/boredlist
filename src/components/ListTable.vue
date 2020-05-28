@@ -63,7 +63,7 @@ export default {
 .delbutton {
   cursor: pointer;
   &:hover {
-    color: #862222;
+    color: red;
   }
 }
 .tablemain {
