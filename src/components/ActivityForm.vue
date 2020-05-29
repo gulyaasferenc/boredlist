@@ -3,7 +3,7 @@
     <form v-if="activity" @submit.prevent="save()">
       <div class="flex">
         <div class="areal">
-          <h3>You should:</h3>
+          <h3>You should:*</h3>
           <textarea
             type="text"
             class="leftinput"
@@ -57,8 +57,8 @@
     </div>
     <Message
       @closeMessage="showMessage = $event"
-      message="Activity is saved to your list"
-      :danger="false"
+      :message="message"
+      :danger="danger"
       v-if="showMessage"
     />
   </div>
@@ -75,6 +75,8 @@ export default {
   data() {
     return {
       showMessage: false,
+      message: "",
+      danger: false,
       types: [
         "education",
         "recreational",
@@ -110,7 +112,15 @@ export default {
     ...mapActions(["getActivityFromApi", "addActivity"]),
     ...mapMutations(["setCurrentActivity"]),
     save() {
+      if (!this.formValues.activity) {
+        this.message = "Activity title is mandatory!";
+        this.danger = true;
+        this.showMessage = true;
+        return;
+      }
       this.addActivity(this.formValues);
+      this.danger = false;
+      this.message = "Activity is saved to your list";
       this.showMessage = true;
     }
   },
