@@ -113,7 +113,7 @@ export default {
     ...mapMutations(["setCurrentActivity"]),
     save() {
       if (!this.formValues.activity) {
-        this.message = "Activity field is mandatory!";
+        this.message = 'Activity field("You should:") is mandatory!';
         this.danger = true;
         this.showMessage = true;
         return;
