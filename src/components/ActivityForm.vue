@@ -112,6 +112,9 @@ export default {
     ...mapActions(["getActivityFromApi", "addActivity"]),
     ...mapMutations(["setCurrentActivity"]),
     save() {
+      if (this.formValues.participants < 1) {
+        this.formValues.participants = 1;
+      }
       if (!this.formValues.activity) {
         this.message = 'Activity field("You should:") is mandatory!';
         this.danger = true;
