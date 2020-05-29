@@ -23,6 +23,10 @@
           </td>
         </tr>
       </table>
+
+      <div class="noactivity" v-if="items.length === 0">
+        No activity saved yet
+      </div>
     </div>
     <button @click="clearActivities" class="clearbutton">Clear All</button>
   </div>
@@ -59,6 +63,11 @@ export default {
 <style lang="scss" scoped>
 .main {
   height: 95%;
+}
+.noactivity {
+  text-align: center;
+  padding: 50px 0 50px 0;
+  width: 100%;
 }
 .delbutton {
   cursor: pointer;
