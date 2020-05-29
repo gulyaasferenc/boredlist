@@ -21,9 +21,11 @@ export default {
     }
   },
   mounted() {
-    setTimeout(() => {
-      this.closeMe();
-    }, 3500);
+    if (!this.danger) {
+      setTimeout(() => {
+        this.closeMe();
+      }, 3500);
+    }
   },
   methods: {
     closeMe() {

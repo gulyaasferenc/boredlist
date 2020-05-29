@@ -45,6 +45,13 @@
         </div>
       </div>
     </form>
+    <div v-else-if="error">
+      <img
+        class="imgclass"
+        src="../assets/sadface.png"
+        alt="Something went wrong"
+      />
+    </div>
     <div class="loader" v-else>
       Loading...
     </div>
@@ -95,7 +102,8 @@ export default {
   },
   computed: {
     ...mapState({
-      activity: state => state.currentActivity
+      activity: state => state.currentActivity,
+      error: state => state.error
     })
   },
   methods: {
@@ -122,6 +130,13 @@ export default {
 form,
 .flex {
   height: 100%;
+}
+.imgclass {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4rem;
+  display: block;
+  width: 20%;
 }
 .littleflex {
   display: flex;

@@ -8,6 +8,7 @@
         <tr v-for="(item, i) in items" :key="i">
           <td>{{ i + 1 }}</td>
           <td>{{ Object.values(item)[0].activity }}</td>
+          <td>{{ Object.values(item)[0].type }}</td>
           <td>{{ Object.values(item)[0].participants }}</td>
           <td>
             {{
@@ -42,7 +43,7 @@ export default {
   },
   data() {
     return {
-      headers: ["#", "Activity", "Participants", "Budget", ""],
+      headers: ["#", "Activity", "Type", "Participants", "Budget", ""],
       tableItems: []
     };
   },

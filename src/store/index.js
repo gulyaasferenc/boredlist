@@ -8,7 +8,8 @@ export default new Vuex.Store({
   state: {
     activities: [],
     currentActivity: null,
-    alertMessage: null
+    alertMessage: null,
+    error: false
   },
   mutations: {
     setActivities: (state, value) => {
@@ -19,6 +20,9 @@ export default new Vuex.Store({
     },
     setAlertMessage: (state, value) => {
       state.alertMessage = value;
+    },
+    setError: (state, value) => {
+      state.error = value;
     }
   },
   actions: {
@@ -32,6 +36,7 @@ export default new Vuex.Store({
           "setAlertMessage",
           `OOOPS, Something went wrong: Message from the server: ${error}`
         );
+        commit("setError", true);
       }
     },
 
