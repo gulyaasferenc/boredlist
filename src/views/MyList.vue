@@ -22,7 +22,7 @@ export default {
   z-index: 10;
   border-radius: 10px;
   background-color: #ededed;
-  height: calc(100% - 52px);
+  height: calc(96% - 52px);
   padding: 10px;
 }
 </style>

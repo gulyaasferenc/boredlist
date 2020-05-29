@@ -24,9 +24,11 @@ html {
   border-radius: 10px;
   align-self: center;
   box-shadow: 0px 59px 83px -40px rgba(0, 0, 0, 0.75);
+  background-color: #ededed;
 }
 
 #nav {
+  background-color: #862222;
   a {
     font-weight: 400;
     color: #d9dfe6;
