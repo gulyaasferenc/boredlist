@@ -48,6 +48,7 @@
     <Message
       @closeMessage="showMessage = $event"
       message="Activity is saved to your list"
+      :danger="false"
       v-if="showMessage"
     />
   </div>

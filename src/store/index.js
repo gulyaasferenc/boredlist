@@ -7,7 +7,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     activities: [],
-    currentActivity: null
+    currentActivity: null,
+    alertMessage: null
   },
   mutations: {
     setActivities: (state, value) => {
@@ -15,13 +16,23 @@ export default new Vuex.Store({
     },
     setCurrentActivity: (state, value) => {
       state.currentActivity = value;
+    },
+    setAlertMessage: (state, value) => {
+      state.alertMessage = value;
     }
   },
   actions: {
     async getActivityFromApi({ commit }) {
-      const resp = await fetch("http://www.boredapi.com/api/activity/");
-      const respObj = await resp.json();
-      commit("setCurrentActivity", respObj);
+      try {
+        const resp = await fetch("http://www.boredapi.com/api/activity/");
+        const respObj = await resp.json();
+        commit("setCurrentActivity", respObj);
+      } catch (error) {
+        commit(
+          "setAlertMessage",
+          `OOOPS, Something went wrong: Message from the server: ${error}`
+        );
+      }
     },
 
     async getActivitiesfromIdb({ commit }) {

@@ -119,5 +119,8 @@ td {
   &:active {
     background-color: black;
   }
+  &:hover {
+    background-color: darkslategray;
+  }
 }
 </style>

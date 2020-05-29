@@ -5,8 +5,33 @@
       <router-link to="/mylist">My list</router-link>
     </div>
     <router-view />
+    <Message
+      @closeMessage="setAlertMessage($event)"
+      v-if="alert"
+      :message="alert"
+      :danger="true"
+    />
   </div>
 </template>
+
+<script>
+import Message from "@/components/Message";
+import { mapState, mapMutations } from "vuex";
+
+export default {
+  components: {
+    Message
+  },
+  computed: {
+    ...mapState({
+      alert: state => state.alertMessage
+    })
+  },
+  methods: {
+    ...mapMutations(["setAlertMessage"])
+  }
+};
+</script>
 
 <style lang="scss">
 html {
