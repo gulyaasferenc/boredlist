@@ -1,6 +1,6 @@
 <template>
   <div class="formmain">
-    <form @submit.prevent="save()">
+    <form v-if="activity" @submit.prevent="save()">
       <div class="flex">
         <div class="areal">
           <h3>You should:</h3>
@@ -45,6 +45,9 @@
         </div>
       </div>
     </form>
+    <div class="loader" v-else>
+      Loading...
+    </div>
     <Message
       @closeMessage="showMessage = $event"
       message="Activity is saved to your list"
@@ -55,7 +58,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapState, mapMutations } from "vuex";
 import Message from "../components/Message";
 export default {
   name: "ActifityForm",
@@ -87,6 +90,9 @@ export default {
   created() {
     this.getActivityFromApi();
   },
+  destroyed() {
+    this.setCurrentActivity(null);
+  },
   computed: {
     ...mapState({
       activity: state => state.currentActivity
@@ -94,6 +100,7 @@ export default {
   },
   methods: {
     ...mapActions(["getActivityFromApi", "addActivity"]),
+    ...mapMutations(["setCurrentActivity"]),
     save() {
       this.addActivity(this.formValues);
       this.showMessage = true;
